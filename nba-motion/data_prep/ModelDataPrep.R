@@ -7,17 +7,20 @@ rm(list=ls())
 
 set.seed(321)
 
-df <- read.csv('event_features_9-20-16.csv') %>% 
-     .[complete.cases(.),]
+# df <- read.csv('event_features_9-20-16.csv') %>% 
+#     .[complete.cases(.),]
+
+df <- read.csv('threepointers_0021500002.csv') %>% 
+    .[complete.cases(.),]
+
 
 
 model_df <- df %>% 
      mutate(target = ifelse(EVENTMSGTYPE == 1, 'Make', 'Miss'),
             target = as.factor(target),
             team_id = as.factor(team_id),
-            PLAYER1_ID = as.factor(PLAYER1_ID)) %>% 
-     select(-c(X,
-               EVENTMSGTYPE))
+            PLAYER1_ID = as.factor(PLAYER1_ID)) %>% select(-c( EVENTMSGTYPE))
+    # select(-c(X, EVENTMSGTYPE))
 
 trainIndex <- createDataPartition(model_df$target, 
                                   p = .7,

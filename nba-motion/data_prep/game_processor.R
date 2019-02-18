@@ -16,7 +16,7 @@ source('functions.R')
 source('derivePlays_event.R')
 source('distance_based_features.R')
 
-CSVS <- c('/Users/home/Downloads/threepointers_0021500002 (1).csv')
+CSVS <- c('threepointers_0021500002.csv')
 
 threes <- read_csv(CSVS[1])
 
